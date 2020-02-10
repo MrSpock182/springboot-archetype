@@ -1,6 +1,5 @@
-package com.example.demo.config;
+package com.example.demo.configuration;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -10,7 +9,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @ConfigurationProperties("demo.datasource")
-public class DataSourceConfig {
+public class DataSourceConfiguration {
 
     private String url;
 
@@ -22,12 +21,12 @@ public class DataSourceConfig {
 
     @Bean
     public DataSource getDataSource() {
-        DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-        dataSourceBuilder.driverClassName(driverClassName);
-        dataSourceBuilder.url(url);
-        dataSourceBuilder.username(username);
-        dataSourceBuilder.password(password);
-        return dataSourceBuilder.build();
+        return DataSourceBuilder.create()
+                .driverClassName(driverClassName)
+                .url(url)
+                .username(username)
+                .password(password)
+                .build();
     }
 
     public String getUrl() {

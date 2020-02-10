@@ -1,4 +1,4 @@
-package com.example.demo.config;
+package com.example.demo.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,10 +18,10 @@ import java.time.LocalDate;
 @Configuration
 @Profile("!test")
 @EnableSwagger2
-public class SwaggerConfig {
+public class SwaggerConfiguration {
 
     @Bean
-    public Docket eDesignApi(SwaggerConfigProperties swaggerConfigProperties) {
+    public Docket eDesignApi(SwaggerConfigurationProperties swaggerConfigProperties) {
         return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo(swaggerConfigProperties)).enable(Boolean.valueOf(swaggerConfigProperties.getEnabled())).select().apis(RequestHandlerSelectors.basePackage(swaggerConfigProperties.getBasePackage()))
                 .paths(PathSelectors.any()).build().pathMapping("/").directModelSubstitute(LocalDate.class, String.class)
                 .genericModelSubstitutes(ResponseEntity.class).useDefaultResponseMessages(Boolean.valueOf(swaggerConfigProperties.getUseDefaultResponseMessages()))
@@ -29,7 +29,7 @@ public class SwaggerConfig {
     }
 
     @Bean
-    UiConfiguration uiConfig(SwaggerConfigProperties swaggerConfigProperties) {
+    UiConfiguration uiConfig(SwaggerConfigurationProperties swaggerConfigProperties) {
         return UiConfigurationBuilder.builder().deepLinking(Boolean.valueOf(swaggerConfigProperties.getDeepLinking())).displayOperationId(Boolean.valueOf(swaggerConfigProperties.getDisplayOperationId()))
                 .defaultModelsExpandDepth(Integer.valueOf(swaggerConfigProperties.getDefaultModelsExpandDepth())).defaultModelExpandDepth(Integer.valueOf(swaggerConfigProperties.getDefaultModelExpandDepth()))
                 .defaultModelRendering(ModelRendering.EXAMPLE).displayRequestDuration(Boolean.valueOf(swaggerConfigProperties.getDisplayRequestDuration())).docExpansion(DocExpansion.NONE)
@@ -39,7 +39,7 @@ public class SwaggerConfig {
 
     }
 
-    private ApiInfo apiInfo(SwaggerConfigProperties swaggerConfigProperties) {
+    private ApiInfo apiInfo(SwaggerConfigurationProperties swaggerConfigProperties) {
         return new ApiInfoBuilder().title(swaggerConfigProperties.getTitle()).description(swaggerConfigProperties.getDescription())
                                    .version(swaggerConfigProperties.getApiVersion()).build();
 

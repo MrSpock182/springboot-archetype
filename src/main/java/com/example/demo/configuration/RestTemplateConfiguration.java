@@ -1,4 +1,4 @@
-package com.example.demo.config;
+package com.example.demo.configuration;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
@@ -6,11 +6,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
 @Configuration
-public class RestTemplateConfig {
+public class RestTemplateConfiguration {
 
     @Bean
     public RestTemplate restTemplate() {
-        RestTemplateBuilder builder = new RestTemplateBuilder();
-        return builder.build();
+        return new RestTemplateBuilder().build();
     }
 }

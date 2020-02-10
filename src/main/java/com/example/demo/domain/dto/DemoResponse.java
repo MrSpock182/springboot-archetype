@@ -1,8 +1,8 @@
-package com.example.demo.model.dto;
+package com.example.demo.domain.dto;
 
-import com.example.demo.model.Demo;
+import com.example.demo.domain.orm.Demo;
 
-public class DemoResponseDTO {
+public class DemoResponse {
 
     private Long id;
 
@@ -32,15 +32,15 @@ public class DemoResponseDTO {
                 '}';
     }
 
-    public static DemoResponseDTO toDTO(Demo demo) {
-        DemoResponseDTO demoResponseDTO = new DemoResponseDTO();
+    public static DemoResponse toDTO(Demo demo) {
+        DemoResponse demoResponseDTO = new DemoResponse();
         demoResponseDTO.setId(demo.getId());
         demoResponseDTO.setDemo(demo.getDemo());
 
         return demoResponseDTO;
     }
 
-    public static Demo fromDTO(DemoResponseDTO demoResponseDTO) {
+    public static Demo fromDTO(DemoResponse demoResponseDTO) {
         Demo demo = new Demo();
         demo.setId(demoResponseDTO.getId());
         demo.setDemo(demoResponseDTO.getDemo());

@@ -1,4 +1,4 @@
-package com.example.demo.model.dto;
+package com.example.demo.domain.dto;
 
 import com.tngtech.archunit.junit.ArchTest;
 import com.tngtech.archunit.lang.ArchRule;

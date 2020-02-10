@@ -1,8 +1,8 @@
-package com.example.demo.model.dto;
+package com.example.demo.domain.dto;
 
-import com.example.demo.model.Demo;
+import com.example.demo.domain.orm.Demo;
 
-public class DemoRequestDTO {
+public class DemoRequest {
 
     public String demo;
 
@@ -21,14 +21,14 @@ public class DemoRequestDTO {
                 '}';
     }
 
-    public static DemoRequestDTO toDTO(Demo demo) {
-        DemoRequestDTO demoRequestDTO = new DemoRequestDTO();
+    public static DemoRequest toDTO(Demo demo) {
+        DemoRequest demoRequestDTO = new DemoRequest();
         demoRequestDTO.setDemo(demo.getDemo());
 
         return demoRequestDTO;
     }
 
-    public static Demo fromDTO(DemoRequestDTO demoRequestDTO) {
+    public static Demo fromDTO(DemoRequest demoRequestDTO) {
         Demo demo = new Demo();
         demo.setDemo(demoRequestDTO.getDemo());
 

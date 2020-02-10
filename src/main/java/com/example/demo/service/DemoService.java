@@ -1,15 +1,14 @@
 package com.example.demo.service;
 
-import com.example.demo.model.dto.DemoRequestDTO;
-import com.example.demo.model.dto.DemoResponseDTO;
-import com.example.demo.model.dto.ListResponseDTO;
-import com.example.demo.model.dto.PageRequestDTO;
+import com.example.demo.domain.dto.*;
+import com.example.demo.domain.orm.Demo;
+import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.RequestParam;
 
 public interface DemoService {
-
-    DemoResponseDTO save(DemoRequestDTO demoRequestDTO);
-    DemoResponseDTO update(Long id, DemoRequestDTO demoRequestDTO);
-    DemoResponseDTO findById(Long id);
-    ListResponseDTO<DemoResponseDTO> findAll(PageRequestDTO<DemoRequestDTO> filter);
+    DemoResponse save(DemoRequest demoRequestDTO);
+    DemoResponse update(Long id, DemoRequest demoRequestDTO);
+    DemoResponse findById(Long id);
+    Page<Demo> findAll(Integer page, Integer pageSize);
     void delete(Long id);
 }
